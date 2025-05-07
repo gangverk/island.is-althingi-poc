@@ -29,7 +29,7 @@ const MainSection = () => {
       <iframe
         tabIndex={-1}
         className={styles.videoIframe}
-        src="http://vod.althingi.is/player/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=false"
+        src="http://vod.althingi.is/player/"
       ></iframe>
       <Box
         display={'flex'}
