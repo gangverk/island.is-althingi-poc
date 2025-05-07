@@ -1,7 +1,6 @@
 import {
   Accordion,
   AccordionItem,
-  ArrowLink,
   Box,
   Bullet,
   BulletList,
@@ -13,28 +12,25 @@ import {
   Stack,
   Text,
   useBreakpoint,
-  VideoIframe,
 } from '@island.is/island-ui/core'
 import styles from './mainSection.module.scss'
 import {
-  linkHome,
-  loremIpsumText,
-  mockDagskra,
-  mockLogOgAlyktanir,
+  LinkToAlthingi,
+  LoremIpsumText,
+  DagskraListMock,
+  LogOgAlyktarnirListMock,
 } from 'apps/althingi/utils/mockData'
-import { blue400 } from '@island.is/island-ui/theme'
 
 const MainSection = () => {
   const { xl } = useBreakpoint()
 
   return (
     <Stack space={3}>
-      {/* <iframe
+      <iframe
         tabIndex={-1}
-        width="100%"
-        height="454"
-        src="http://vod.althingi.is/player/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=true"
-      ></iframe> */}
+        className={styles.videoIframe}
+        src="http://vod.althingi.is/player/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=false"
+      ></iframe>
       <Box
         display={'flex'}
         justifyContent={'spaceBetween'}
@@ -83,16 +79,19 @@ const MainSection = () => {
                 <Bullet>
                   <Inline space="smallGutter" alignY="center">
                     <Text>{'Störf þingsins'}</Text>
-                    <Link href={linkHome} className={styles.bulletLink}>
+                    <Link href={LinkToAlthingi} className={styles.bulletLink}>
                       {'Mælendaskrá'}
                     </Link>
                   </Inline>
                 </Bullet>
-                {mockDagskra.map((item) => (
+                {DagskraListMock.map((item) => (
                   <Bullet key={item.id}>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                       <div>
-                        <Link href={linkHome} className={styles.bulletLink}>
+                        <Link
+                          href={LinkToAlthingi}
+                          className={styles.bulletLink}
+                        >
                           {item.linkText}
                         </Link>
                         {item.text}
@@ -107,18 +106,18 @@ const MainSection = () => {
               id={'heimsoknir'}
               label={'Heimsóknir'}
             >
-              <Text>{loremIpsumText}</Text>
+              <Text>{LoremIpsumText}</Text>
             </AccordionItem>
             <AccordionItem
               key={'tilkyningar'}
               id={'tilkyningar'}
               label={'Tilkynningar'}
             >
-              <Text>{loremIpsumText}</Text>
+              <Text>{LoremIpsumText}</Text>
             </AccordionItem>
             <AccordionItem key={'log'} id={'log'} label={'Lög og ályktanir'}>
               <Stack space={2}>
-                {mockLogOgAlyktanir.map((item) => (
+                {LogOgAlyktarnirListMock.map((item) => (
                   <Stack space={1} key={item.date}>
                     <Text variant="h5" color="dark400">
                       {item.date}
@@ -141,17 +140,17 @@ const MainSection = () => {
               </Stack>
             </AccordionItem>
             <AccordionItem key={'raedur'} id={'raedur'} label={'Ræður'}>
-              <Text>{loremIpsumText}</Text>
+              <Text>{LoremIpsumText}</Text>
             </AccordionItem>
             <AccordionItem
               key={'thingskjol'}
               id={'thingskjol'}
               label={'Þingskjöl'}
             >
-              <Text>{loremIpsumText}</Text>
+              <Text>{LoremIpsumText}</Text>
             </AccordionItem>
             <AccordionItem key={'erindi'} id={'erindi'} label={'Erindi'}>
-              <Text>{loremIpsumText}</Text>
+              <Text>{LoremIpsumText}</Text>
             </AccordionItem>
           </Accordion>
         </Stack>

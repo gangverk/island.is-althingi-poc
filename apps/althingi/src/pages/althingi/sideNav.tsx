@@ -1,5 +1,5 @@
 import { Text, Box, Link } from '@island.is/island-ui/core'
-import { linkHome, mockNavItems } from 'apps/althingi/utils/mockData'
+import { LinkToAlthingi, NavItemMock } from 'apps/althingi/utils/mockData'
 
 const SideNav = () => {
   return (
@@ -21,8 +21,8 @@ const SideNav = () => {
           </Text>
         </Box>
         <Box padding={4} paddingBottom={3} paddingTop={3}>
-          {mockNavItems.map((item) => (
-            <Link key={item.id} href={linkHome}>
+          {NavItemMock.map((item) => (
+            <Link key={item.id} href={LinkToAlthingi}>
               <Text marginTop={2} color="blue600">
                 {item.title}
               </Text>
@@ -40,12 +40,12 @@ const SideNav = () => {
         <Text variant="eyebrow" color="blueberry600">
           Fyrir fagfólk
         </Text>
-        <Link href={linkHome}>
+        <Link href={LinkToAlthingi}>
           <Text marginTop={2} color="blueberry600">
             Kæruréttur vegna fæðingar- eða foreldraorlofs
           </Text>
         </Link>
-        <Link href={linkHome}>
+        <Link href={LinkToAlthingi}>
           <Text marginTop={1} color="blueberry600">
             Réttindir starfsmanns í fæðingaorlofi
           </Text>

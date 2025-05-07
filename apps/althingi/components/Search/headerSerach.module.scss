@@ -7,3 +7,9 @@
 .searchWrapper {
    padding-top: 5%;
 }
+
+@media (max-width: 576px) {
+    .searchWrapper {
+        padding-top: 2%;
+     }
+  }

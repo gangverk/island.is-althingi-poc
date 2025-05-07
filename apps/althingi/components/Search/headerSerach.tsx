@@ -1,25 +1,14 @@
 import {
-  Text,
-  GridContainer,
   GridRow,
   GridColumn,
-  Link,
-  Stack,
   AsyncSearch,
   Tag,
   Inline,
-  Hidden,
   useBreakpoint,
 } from '@island.is/island-ui/core'
 import styles from './headerSerach.module.scss'
 import { useState } from 'react'
-
-const tagList = [
-  { key: 'althingi', label: 'Alþingi' },
-  { key: 'thingmenn', label: 'Þingmenn' },
-  { key: 'mal', label: 'Þingfundur og mál' },
-  { key: 'lagasafn', label: 'Lagasafn' },
-]
+import { TagListMock } from 'apps/althingi/utils/mockData'
 
 interface HeaderProps {
   searchQuery: string
@@ -37,7 +26,7 @@ export const HeaderSearch = ({ searchQuery, setSearchQuery }: HeaderProps) => {
         className={styles.searchContainer}
       >
         <Inline space={1}>
-          {tagList.map((tag) => (
+          {TagListMock.map((tag) => (
             <Tag
               onClick={() => {
                 setActiveTag(tag.key)
@@ -53,7 +42,7 @@ export const HeaderSearch = ({ searchQuery, setSearchQuery }: HeaderProps) => {
         </Inline>
         <AsyncSearch
           options={[]}
-          size={md ? 'large' : 'medium'}
+          size={md ? 'large' : 'semi-large'}
           placeholder="Leita"
           inputValue={searchQuery}
           onInputValueChange={(query) => {

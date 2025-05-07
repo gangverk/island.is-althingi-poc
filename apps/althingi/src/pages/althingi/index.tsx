@@ -1,6 +1,5 @@
 import Header from 'apps/althingi/components/Header/header'
 import styles from './index.module.scss'
-
 import {
   Text,
   GridContainer,
@@ -11,23 +10,26 @@ import {
   useBreakpoint,
   Navigation,
   Hidden,
+  Page,
 } from '@island.is/island-ui/core'
 import { useState } from 'react'
 import { HeaderSearch } from 'apps/althingi/components/Search/headerSerach'
 import MainSection from './mainSection'
-import { linkHome, mockMobileNavItems } from 'apps/althingi/utils/mockData'
 import SideNav from './sideNav'
+import AlthingiHouseIcon from '../../Icons/althingiHouseIcon'
+import AlthingiTextIcon from '../../Icons/althingiTextIcon'
+import { MobileNavItemsMock } from 'apps/althingi/utils/mockData'
 
 const Althingi = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const { lg } = useBreakpoint()
 
   return (
-    <>
+    <Page>
       <GridContainer className={styles.pageHeader}>
         <Header />
       </GridContainer>
-      <GridContainer className={styles.pageHeader2}>
+      <GridContainer className={styles.pageHero}>
         <HeaderSearch
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -37,16 +39,16 @@ const Althingi = () => {
         <GridRow className={styles.logoCard}>
           <GridColumn span={['12/12', '12/12', '12/12', '3/12']}>
             <Box
-              paddingTop={2}
-              paddingLeft={4}
-              paddingBottom={1}
+              paddingTop={lg ? 2 : 1}
+              paddingBottom={lg ? 2 : 1}
+              paddingLeft={lg ? 4 : 3}
               marginBottom={lg ? 0 : 2}
               background="blue600"
               borderRadius="large"
             >
               <Inline space="gutter" alignY={'center'}>
-                <img src="../althingiIcon.png" alt="Althingi icon" />
-                <img src="../althingiText.png" alt="Althingi text" />
+                <AlthingiHouseIcon />
+                <AlthingiTextIcon />
               </Inline>
             </Box>
             <Hidden above="md">
@@ -56,7 +58,7 @@ const Althingi = () => {
                   activeItemTitle="Efnisyfirlit"
                   colorScheme="blue"
                   isMenuDialog
-                  items={mockMobileNavItems}
+                  items={MobileNavItemsMock}
                   title="Efnisyfirlit"
                 />
               </Box>
@@ -75,7 +77,7 @@ const Althingi = () => {
           </GridColumn>
         </GridRow>
       </GridContainer>
-    </>
+    </Page>
   )
 }
 
