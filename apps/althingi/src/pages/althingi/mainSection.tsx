@@ -29,12 +29,12 @@ const MainSection = () => {
 
   return (
     <Stack space={3}>
-      <iframe
+      {/* <iframe
         tabIndex={-1}
         width="100%"
         height="454"
         src="http://vod.althingi.is/player/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=true"
-      ></iframe>
+      ></iframe> */}
       <Box
         display={'flex'}
         justifyContent={'spaceBetween'}

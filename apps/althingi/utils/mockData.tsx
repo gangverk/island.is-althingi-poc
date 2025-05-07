@@ -115,3 +115,35 @@ export const mockLogOgAlyktanir = [
     ],
   },
 ]
+
+export const mockNavItems = [
+  { id: 1, title: 'Þingfundir og mál' },
+  { id: 2, title: 'Nefndir' },
+  { id: 3, title: 'Alþjóðastarf' },
+  { id: 4, title: 'Lagasafn' },
+  { id: 5, title: 'Ályktanir Alþingis' },
+  { id: 6, title: 'Um Alþingi' },
+]
+
+export const mockMobileNavItems = [
+  { href: linkHome, title: 'Þingfundir og mál' },
+  { href: linkHome, title: 'Nefndir' },
+  { href: linkHome, title: 'Alþjóðastarf' },
+  { href: linkHome, title: 'Lagasafn' },
+  { href: linkHome, title: 'Ályktanir Alþingis' },
+  { href: linkHome, title: 'Um Alþingi' },
+  {
+    active: true,
+    items: [
+      {
+        href: linkHome,
+        title: 'Kæruréttur vegna fæðingar- eða foreldraorlofs',
+      },
+      {
+        href: linkHome,
+        title: 'Réttindir starfsmanns í fæðingaorlofi',
+      },
+    ],
+    title: 'Fyrir fagfólk',
+  },
+]

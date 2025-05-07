@@ -7,14 +7,16 @@ import {
   GridRow,
   GridColumn,
   Box,
-  Link,
   Inline,
   useBreakpoint,
+  Navigation,
+  Hidden,
 } from '@island.is/island-ui/core'
 import { useState } from 'react'
 import { HeaderSearch } from 'apps/althingi/components/Search/headerSerach'
 import MainSection from './mainSection'
-import AlthingiLinesIcon from '../../Icons/althingiLinesIcon'
+import { linkHome, mockMobileNavItems } from 'apps/althingi/utils/mockData'
+import SideNav from './sideNav'
 
 const Althingi = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -32,92 +34,38 @@ const Althingi = () => {
         />
       </GridContainer>
       <GridContainer>
-        {lg && (
-          <GridRow className={styles.logoCard}>
-            <GridColumn span={['3/12']}>
-              <Box padding={2} background="blue600" borderRadius="large">
-                <Inline space="gutter" align="center" alignY={'center'}>
-                  <img src="../althingiIcon.png" alt="Althingi icon" />
-                  <img src="../althingiText.png" alt="Althingi text" />
-                </Inline>
+        <GridRow className={styles.logoCard}>
+          <GridColumn span={['12/12', '12/12', '12/12', '3/12']}>
+            <Box
+              paddingTop={2}
+              paddingLeft={4}
+              paddingBottom={1}
+              marginBottom={lg ? 0 : 2}
+              background="blue600"
+              borderRadius="large"
+            >
+              <Inline space="gutter" alignY={'center'}>
+                <img src="../althingiIcon.png" alt="Althingi icon" />
+                <img src="../althingiText.png" alt="Althingi text" />
+              </Inline>
+            </Box>
+            <Hidden above="md">
+              <Box>
+                <Navigation
+                  baseId="nav"
+                  activeItemTitle="Efnisyfirlit"
+                  colorScheme="blue"
+                  isMenuDialog
+                  items={mockMobileNavItems}
+                  title="Efnisyfirlit"
+                />
               </Box>
-            </GridColumn>
-          </GridRow>
-        )}
+            </Hidden>
+          </GridColumn>
+        </GridRow>
         <GridRow marginTop={lg ? 2 : 5}>
           <GridColumn span={['3/12']} hiddenBelow="lg">
-            <Box
-              borderRadius={'large'}
-              paddingTop={3}
-              border="disabled"
-              background={'blue100'}
-              position="sticky"
-            >
-              <Box
-                paddingLeft={4}
-                paddingBottom={3}
-                borderBottomWidth="standard"
-                borderColor="blue200"
-              >
-                <Text variant="h4" fontWeight={'semiBold'} color="blue600">
-                  Efnisyfirlit
-                </Text>
-              </Box>
-              <Box padding={4} paddingBottom={3} paddingTop={3}>
-                <Link href="/">
-                  <Text marginTop={2} color="blue600">
-                    Þingfundir og mál
-                  </Text>
-                </Link>
-                <Link href="/">
-                  <Text marginTop={2} color="blue600">
-                    Nefndir
-                  </Text>
-                </Link>
-                <Link href="/">
-                  <Text marginTop={2} color="blue600">
-                    Alþjóðastarf
-                  </Text>
-                </Link>
-                <Link href="/">
-                  <Text marginTop={2} color="blue600">
-                    Lagasafn
-                  </Text>
-                </Link>
-                <Link href="/">
-                  <Text marginTop={2} color="blue600">
-                    Ályktanir Alþingis
-                  </Text>
-                </Link>
-                <Link href="/">
-                  <Text marginTop={2} color="blue600">
-                    Um Alþingi
-                  </Text>
-                </Link>
-              </Box>
-            </Box>
-            <Box
-              borderRadius={'large'}
-              marginTop={3}
-              padding={4}
-              border="disabled"
-              background={'blue100'}
-              position="sticky"
-            >
-              <Text variant="eyebrow" color="blueberry600">
-                Fyrir fagfólk
-              </Text>
-              <Link href="/">
-                <Text marginTop={2} color="blueberry600">
-                  Kæruréttur vegna fæðingar- eða foreldraorlofs
-                </Text>
-              </Link>
-              <Link href="/">
-                <Text marginTop={1} color="blueberry600">
-                  Réttindir starfsmanns í fæðingaorlofi
-                </Text>
-              </Link>
-            </Box>
+            <SideNav />
           </GridColumn>
           <GridColumn
             span={['12/12', '12/12', '12/12', '7/12']}
