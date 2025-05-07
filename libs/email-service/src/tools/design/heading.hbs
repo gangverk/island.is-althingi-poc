@@ -1,0 +1,13 @@
+{{#if (eq align "left")}}
+  {{#> left}}
+    {{> headingblock align="left" eyebrow=eyebrow copy=copy small=small}}
+  {{/left}}
+{{else if (eq align "right")}}
+  {{#> right}}
+    {{> headingblock align="right" eyebrow=eyebrow copy=copy small=small}}
+  {{/right}}
+{{else}}
+  {{#> center}}
+    {{> headingblock align="center" eyebrow=eyebrow copy=copy small=small}}
+  {{/center}}
+{{/if}}

@@ -1,0 +1,23 @@
+.link {
+    text-decoration: underline;
+    text-decoration-color: #0061FF;
+  }
+
+  .bulletLink {
+    text-decoration: none !important;
+    color: #00003C !important;
+
+  }
+  
+  .videoLink {
+    display: flex;
+    align-items: center;
+    border-bottom: #0061FF 1px solid;
+    color: #0061FF;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 16px;
+    width: fit-content;
+  }
+
+  

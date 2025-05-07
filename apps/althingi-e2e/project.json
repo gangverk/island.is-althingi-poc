@@ -1,0 +1,19 @@
+{
+  "name": "althingi-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/althingi-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["althingi"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/althingi-e2e"],
+      "options": {
+        "config": "apps/althingi-e2e/playwright.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
