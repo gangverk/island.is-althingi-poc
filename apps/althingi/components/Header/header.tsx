@@ -15,6 +15,7 @@ import {
 } from '@island.is/island-ui/core'
 import { Menu } from '../Menu/menu'
 import styles from './header.module.scss'
+import { LinkToAlthingi } from 'apps/althingi/utils/mockData'
 
 export const Header = () => {
   return (
@@ -24,7 +25,10 @@ export const Header = () => {
           <GridColumn span="12/12" paddingTop={4} paddingBottom={4}>
             <Columns alignY="center" space={2}>
               <Column width="content">
-                <FocusableBox href="/" data-testid="link-back-home">
+                <FocusableBox
+                  href={LinkToAlthingi}
+                  data-testid="link-back-home"
+                >
                   <Hidden above="md">
                     <Logo id="header-logo-icon" width={40} iconOnly />
                   </Hidden>

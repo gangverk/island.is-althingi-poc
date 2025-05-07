@@ -122,7 +122,7 @@ const MainSection = () => {
                     <Text variant="h5" color="dark400">
                       {item.date}
                     </Text>
-                    <BulletList space={3}>
+                    <BulletList space={1}>
                       {item.items.map((subItem, index) => (
                         <Bullet key={index}>
                           <LinkV2
