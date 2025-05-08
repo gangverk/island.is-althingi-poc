@@ -1,13 +1,19 @@
-const AlthingiHouseIcon = () => {
+const AlthingiHouseIcon = ({
+  height = '50',
+  width = '78',
+}: {
+  height?: string
+  width?: string
+}) => {
   return (
     <svg
-      width="78"
-      height="50"
-      viewBox="0 0 78 50"
+      width={width}
+      height={height}
+      viewBox={`0 0 ${width} ${height}`}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect width="78" height="50" fill="url(#pattern0_337_11599)" />
+      <rect width={width} height={height} fill="url(#pattern0_337_11599)" />
       <defs>
         <pattern
           id="pattern0_337_11599"

@@ -78,6 +78,7 @@ const ThingmennPage = () => {
           </GridColumn>
         </GridRow>
       </GridContainer>
+      <Footer />
     </Page>
   )
 }

@@ -1,5 +1,64 @@
 .footer {
     width: 100%;
     background-color: #0044B3;
+    height: auto;
+    position: relative;
+    display: flex; 
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
 }
 
+.footerLink {
+    padding: 4px 16px;
+    border-radius: 8px;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    width: fit-content;
+}
+
+.socialContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-right: 32px;
+}
+
+.islandFooter {
+    width: 100%;
+    background-color: #fff;
+}
+
+.islandFooterContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.middleSection {
+    margin-top: 64px;
+    display: flex;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    .middleSection {
+        margin-top: 32px;
+    }
+  }
+
+.middleSectionInfo {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: center;
+}
+
+@media (min-width: 767px) {
+    .middleSectionInfo {
+      margin: auto;
+    }
+  }

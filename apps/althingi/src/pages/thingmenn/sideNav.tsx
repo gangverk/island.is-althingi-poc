@@ -74,27 +74,6 @@ const SideNav = () => {
           })}
         </Box>
       </Box>
-      <Box
-        borderRadius={'large'}
-        marginTop={3}
-        padding={4}
-        border="disabled"
-        background={'blue100'}
-      >
-        <Text variant="eyebrow" color="blueberry600">
-          Fyrir fagfólk
-        </Text>
-        <Link href={LinkToAlthingi}>
-          <Text marginTop={2} color="blueberry600">
-            Kæruréttur vegna fæðingar- eða foreldraorlofs
-          </Text>
-        </Link>
-        <Link href={LinkToAlthingi}>
-          <Text marginTop={1} color="blueberry600">
-            Réttindir starfsmanns í fæðingaorlofi
-          </Text>
-        </Link>
-      </Box>
     </>
   )
 }

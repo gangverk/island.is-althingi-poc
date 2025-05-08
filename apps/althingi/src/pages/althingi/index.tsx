@@ -1,7 +1,6 @@
 import Header from 'apps/althingi/components/Header/header'
 import styles from './index.module.scss'
 import {
-  Text,
   GridContainer,
   GridRow,
   GridColumn,
@@ -19,6 +18,7 @@ import SideNav from './sideNav'
 import AlthingiHouseIcon from '../../Icons/althingiHouseIcon'
 import AlthingiTextIcon from '../../Icons/althingiTextIcon'
 import { MobileNavItemsMock } from 'apps/althingi/utils/mockData'
+import Footer from 'apps/althingi/components/Footer/footer'
 
 const Althingi = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -77,6 +77,7 @@ const Althingi = () => {
           </GridColumn>
         </GridRow>
       </GridContainer>
+      <Footer />
     </Page>
   )
 }
