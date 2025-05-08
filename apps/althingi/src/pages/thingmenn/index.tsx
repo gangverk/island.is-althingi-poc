@@ -21,7 +21,7 @@ import AlthingimennMainContent from './mainContent'
 import Footer from 'apps/althingi/components/Footer/footer'
 
 const ThingmennPage = () => {
-  const [searhValue, setSearchValue] = useState('0')
+  const [searhValue, setSearchValue] = useState('')
 
   return (
     <Page>

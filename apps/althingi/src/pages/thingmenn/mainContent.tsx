@@ -1,10 +1,8 @@
 import {
-  AsyncSearchInput,
   Box,
   Breadcrumbs,
   Button,
   DropdownMenu,
-  Icon,
   Inline,
   Input,
   LinkV2,
@@ -26,7 +24,6 @@ import { useDebounce } from 'react-use'
 const AlthingimennMainContent = () => {
   const [activeTag, setActiveTag] = useState<string | null>(null)
   const [filteredList, setFilteredList] = useState(ThingmennListMock)
-  const [focused, setFocused] = useState(false)
   const [searchInput, setSearchInput] = useState('')
   const [debouncedSearchInput, setDebouncedSearchInput] = useState(searchInput)
   const [currentPage, setCurrentPage] = useState(1)

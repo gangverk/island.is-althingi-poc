@@ -1,13 +1,6 @@
-import {
-  Text,
-  Box,
-  Link,
-  SidebarAccordion,
-  Stack,
-} from '@island.is/island-ui/core'
+import { Text, Box, Link, Stack } from '@island.is/island-ui/core'
 import {
   LinkToAlthingi,
-  NavItemMock,
   ThingmennNavItemsMock,
 } from 'apps/althingi/utils/mockData'
 
