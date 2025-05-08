@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   useBreakpoint,
+  VideoIframe,
 } from '@island.is/island-ui/core'
 import styles from './mainSection.module.scss'
 import {
@@ -26,11 +27,10 @@ const MainSection = () => {
 
   return (
     <Stack space={3}>
-      <iframe
-        tabIndex={-1}
-        className={styles.videoIframe}
-        src="http://vod.althingi.is/player/?type=dvr&dvrwindow=6/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=false"
-      ></iframe>
+      <div className={styles.videoIframe}>
+        <VideoIframe src="http://vod.althingi.is/player/?type=dvr&dvrwindow=6/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=false" />
+      </div>
+
       <Box
         display={'flex'}
         justifyContent={'spaceBetween'}
