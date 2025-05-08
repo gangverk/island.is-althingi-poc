@@ -64,7 +64,7 @@ const ThingmennPage = () => {
                   <span className={styles.backLinkIcon}>
                     <Icon icon="arrowBack" color="blue600" size={'small'} />
                   </span>
-                  Til baka í efnisyfirlit.
+                  Til baka í efnisyfirlit
                 </span>
               </Box>
               <SideNav />
