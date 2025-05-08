@@ -28,7 +28,7 @@ const MainSection = () => {
   return (
     <Stack space={3}>
       <div className={styles.videoIframe}>
-        <VideoIframe src="http://vod.althingi.is/player/?type=dvr&dvrwindow=6/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=false" />
+        <VideoIframe src="https://vod.althingi.is/player/?type=dvr&dvrwindow=6/?type=vod&width=512&height=288&icons=yes&file=20250506T131300&start=1004&duration=20669&autoplay=false" />
       </div>
 
       <Box
