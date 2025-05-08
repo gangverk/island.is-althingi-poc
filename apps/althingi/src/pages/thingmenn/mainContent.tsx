@@ -6,6 +6,7 @@ import {
   DropdownMenu,
   Icon,
   Inline,
+  Input,
   LinkV2,
   Pagination,
   Stack,
@@ -75,26 +76,31 @@ const AlthingimennMainContent = () => {
         <Stack space={2}>
           <div className={style.filterContainer}>
             <div className={style.searchBar}>
-              <AsyncSearchInput
-                hasFocus={focused}
-                inputProps={{
-                  name: 'search-thingmenn',
-                  value: searchInput,
-                  inputSize: 'medium',
-                  onChange: (event: BaseSyntheticEvent) => {
-                    setSearchInput(event.target.value)
+              <Input
+                backgroundColor="blue"
+                {...(searchInput === '' && {
+                  icon: {
+                    name: 'search',
                   },
-                  onFocus: () => setFocused(true),
-                  placeholder: 'Sía eftir leitarorði',
-                  colored: true,
-                }}
-                buttonProps={{
-                  type: 'button',
-                  onClick: () => {
-                    if (searchInput) {
-                      setSearchInput('')
-                    }
-                  },
+                })}
+                buttons={
+                  searchInput !== ''
+                    ? [
+                        {
+                          label: 'clear',
+                          name: 'close',
+                          onClick: () => setSearchInput(''),
+                          type: 'outline',
+                        },
+                      ]
+                    : []
+                }
+                name="search-thingmenn"
+                placeholder="Sía eftir leitarorði"
+                size="sm"
+                value={searchInput || ''}
+                onChange={(event: BaseSyntheticEvent) => {
+                  setSearchInput(event.target.value)
                 }}
               />
             </div>
