@@ -18,6 +18,7 @@ import SideNav from './sideNav'
 import styles from './index.module.scss'
 import { LinkToAlthingi } from 'apps/althingi/utils/mockData'
 import AlthingimennMainContent from './mainContent'
+import Footer from 'apps/althingi/components/Footer/footer'
 
 const ThingmennPage = () => {
   const [searhValue, setSearchValue] = useState('0')
@@ -28,7 +29,7 @@ const ThingmennPage = () => {
         <Header />
       </GridContainer>
       <GridContainer>
-        <GridRow marginTop={2}>
+        <GridRow marginTop={2} marginBottom={22}>
           <GridColumn span={['3/12']} hiddenBelow="lg">
             <Stack space={3}>
               <Box
@@ -66,7 +67,6 @@ const ThingmennPage = () => {
                   Til baka í efnisyfirlit
                 </span>
               </Box>
-
               <SideNav />
             </Stack>
           </GridColumn>

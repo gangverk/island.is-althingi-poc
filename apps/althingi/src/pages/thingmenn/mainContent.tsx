@@ -1,9 +1,10 @@
 import {
-  AsyncSearch,
+  AsyncSearchInput,
   Box,
   Breadcrumbs,
   Button,
   DropdownMenu,
+  Icon,
   Inline,
   LinkV2,
   Pagination,
@@ -17,12 +18,46 @@ import {
   TagsThingmenFiltertMock,
   ThingmennListMock,
 } from 'apps/althingi/utils/mockData'
-import { useState } from 'react'
+import { BaseSyntheticEvent, useEffect, useState } from 'react'
 import style from './index.module.scss'
+import { useDebounce } from 'react-use'
 
 const AlthingimennMainContent = () => {
-  const [searhValue, setSearchValue] = useState('0')
   const [activeTag, setActiveTag] = useState<string | null>(null)
+  const [filteredList, setFilteredList] = useState(ThingmennListMock)
+  const [focused, setFocused] = useState(false)
+  const [searchInput, setSearchInput] = useState('')
+  const [debouncedSearchInput, setDebouncedSearchInput] = useState(searchInput)
+  const [currentPage, setCurrentPage] = useState(1)
+  const pageSize = 10
+
+  const paginatedList = filteredList.slice(
+    (currentPage - 1) * pageSize,
+    currentPage * pageSize,
+  )
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [debouncedSearchInput])
+
+  useDebounce(
+    () => {
+      setDebouncedSearchInput(searchInput)
+    },
+    500,
+    [searchInput],
+  )
+
+  useEffect(() => {
+    const filtered = ThingmennListMock.filter((item) => {
+      const matchesSearch = item.nafn
+        .toLowerCase()
+        .includes(debouncedSearchInput.toLowerCase())
+
+      return matchesSearch
+    })
+    setFilteredList(filtered)
+  }, [debouncedSearchInput])
 
   return (
     <Stack space={3}>
@@ -40,15 +75,26 @@ const AlthingimennMainContent = () => {
         <Stack space={2}>
           <div className={style.filterContainer}>
             <div className={style.searchBar}>
-              <AsyncSearch
-                options={[]}
-                placeholder="Sía eftir leitarorði"
-                inputValue={searhValue}
-                onChange={(selection) => {
-                  const { value, label } = selection || {}
-                  if (value && label) {
-                    setSearchValue(label)
-                  }
+              <AsyncSearchInput
+                hasFocus={focused}
+                inputProps={{
+                  name: 'search-thingmenn',
+                  value: searchInput,
+                  inputSize: 'medium',
+                  onChange: (event: BaseSyntheticEvent) => {
+                    setSearchInput(event.target.value)
+                  },
+                  onFocus: () => setFocused(true),
+                  placeholder: 'Sía eftir leitarorði',
+                  colored: true,
+                }}
+                buttonProps={{
+                  type: 'button',
+                  onClick: () => {
+                    if (searchInput) {
+                      setSearchInput('')
+                    }
+                  },
                 }}
               />
             </div>
@@ -64,7 +110,7 @@ const AlthingimennMainContent = () => {
                 title="Fleiri síur"
               />
             </div>
-            <Button variant="utility" icon="download">
+            <Button variant="utility" icon="download" iconType="outline">
               Sækja CSV
             </Button>
           </div>
@@ -83,21 +129,27 @@ const AlthingimennMainContent = () => {
               </Tag>
             ))}
           </Inline>
-          <T.Table>
-            <T.Head>
-              <T.Row>
-                <T.HeadData>Nafn</T.HeadData>
-                <T.HeadData>Skammstöfun</T.HeadData>
-                <T.HeadData>Kjördæma-númer</T.HeadData>
-                <T.HeadData>Kjördæmi</T.HeadData>
-                <T.HeadData>Þingflokkur</T.HeadData>
-              </T.Row>
-            </T.Head>
-            <T.Body>
-              {ThingmennListMock.map((item) => {
-                return (
-                  <T.Row>
-                    <T.Data key={item.id}>
+          {paginatedList.length === 0 ? (
+            <Box paddingTop={4}>
+              <Text variant="h3" color="dark400">
+                Enginn alþingismaður fannst.
+              </Text>
+            </Box>
+          ) : (
+            <T.Table>
+              <T.Head>
+                <T.Row>
+                  <T.HeadData>Nafn</T.HeadData>
+                  <T.HeadData>Skammstöfun</T.HeadData>
+                  <T.HeadData>Kjördæma-númer</T.HeadData>
+                  <T.HeadData>Kjördæmi</T.HeadData>
+                  <T.HeadData>Þingflokkur</T.HeadData>
+                </T.Row>
+              </T.Head>
+              <T.Body>
+                {paginatedList.map((item) => (
+                  <T.Row key={item.id}>
+                    <T.Data>
                       <Stack space={0}>
                         <LinkV2 href={'/thingmenn'} className={style.nameLink}>
                           {item.nafn}
@@ -107,38 +159,41 @@ const AlthingimennMainContent = () => {
                         )}
                       </Stack>
                     </T.Data>
-                    <T.Data key={item.id}>
+                    <T.Data>
                       <Text variant="small">{item.skammstofun}</Text>
                     </T.Data>
-                    <T.Data key={item.id}>
+                    <T.Data>
                       <Text variant="small">{item.number}</Text>
                     </T.Data>
-                    <T.Data key={item.id}>
+                    <T.Data>
                       <Text variant="small">{item.kjordaemi}</Text>
                     </T.Data>
-                    <T.Data key={item.id}>
+                    <T.Data>
                       <Text variant="small">{item.flokkur}</Text>
                     </T.Data>
                   </T.Row>
-                )
-              })}
-            </T.Body>
-            <T.Foot>
-              <T.Row>
-                <T.Data colSpan={5}>
-                  <Pagination
-                    page={1}
-                    totalPages={10}
-                    renderLink={(page, className, children) => (
-                      <button onClick={() => {}}>
-                        <span className={className}>{children}</span>
-                      </button>
-                    )}
-                  />
-                </T.Data>
-              </T.Row>
-            </T.Foot>
-          </T.Table>
+                ))}
+              </T.Body>
+              <T.Foot>
+                <T.Row>
+                  <T.Data colSpan={5}>
+                    <Pagination
+                      page={currentPage}
+                      totalPages={Math.ceil(filteredList.length / pageSize)}
+                      renderLink={(page, className, children) => (
+                        <button
+                          onClick={() => setCurrentPage(page)}
+                          className={className}
+                        >
+                          {children}
+                        </button>
+                      )}
+                    />
+                  </T.Data>
+                </T.Row>
+              </T.Foot>
+            </T.Table>
+          )}
         </Stack>
       </Box>
     </Stack>

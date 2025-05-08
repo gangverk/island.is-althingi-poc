@@ -34,20 +34,37 @@ const SideNav = () => {
           {ThingmennNavItemsMock.map((item) => {
             if (item.id === 0) {
               return (
-                <Link key={item.id} href={item.href}>
-                  <Text
-                    variant="h5"
+                <Stack space={0}>
+                  <Link key={item.id} href={item.href}>
+                    <Text
+                      variant="h5"
+                      marginTop={2}
+                      color="blue400"
+                      fontWeight={'semiBold'}
+                    >
+                      {item.title}
+                    </Text>
+                  </Link>
+                  <Box
+                    paddingLeft={2}
                     marginTop={2}
-                    color="blue600"
-                    fontWeight={'semiBold'}
+                    borderLeftWidth="standard"
+                    borderColor="blue200"
                   >
-                    {item.title}
-                  </Text>
-                </Link>
+                    <Stack space={2}>
+                      <Link href={item.href}>
+                        <Text color="blue400">{'Sætaskipun þingmanna'}</Text>
+                      </Link>
+                      <Link href={item.href}>
+                        <Text color="blue400">{'Aðstoðarmenn'}</Text>
+                      </Link>
+                    </Stack>
+                  </Box>
+                </Stack>
               )
             } else {
               return (
-                <Link key={item.id} href={item.href}>
+                <Link key={item.id} href={LinkToAlthingi}>
                   <Text marginTop={2} color="blue600">
                     {item.title}
                   </Text>
